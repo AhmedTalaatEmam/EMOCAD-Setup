@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EMOCAD — Structural tools for AutoCAD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E1B2A; --paper:#F5F2EA; --steel:#2D6CB5; --steel-dk:#1E4E86;
+    --amber:#E8A317; --amber-dk:#C6870B; --grid-ink:rgba(255,255,255,.06);
+    --line:#C9CDD4; --muted:#5B6673;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"IBM Plex Sans","IBM Plex Sans Arabic",system-ui,sans-serif;
+    background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  html[dir="rtl"] body{font-family:"IBM Plex Sans Arabic","IBM Plex Sans",system-ui,sans-serif}
+  .mono{font-family:"IBM Plex Mono",monospace}
+  html[lang="en"] .ar{display:none}
+  html[lang="ar"] .en{display:none}
+  .wrap{max-width:940px;margin:0 auto;padding:0 24px}
+
+  header{position:sticky;top:0;z-index:10;background:rgba(245,242,234,.85);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .bar{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.02em;font-size:19px}
+  .brand .mark{width:30px;height:30px;border:2px solid var(--ink);position:relative;flex:none}
+  .brand .mark::before{content:"";position:absolute;inset:5px;border:1px solid var(--steel)}
+  .brand .mark::after{content:"";position:absolute;width:2px;height:2px;background:var(--amber);
+    top:calc(50% - 1px);left:calc(50% - 1px);
+    box-shadow:8px 0 0 var(--amber),-8px 0 0 var(--amber),0 8px 0 var(--amber),0 -8px 0 var(--amber)}
+  .langbtn{font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;background:none;
+    border:1px solid var(--line);border-radius:2px;padding:7px 14px;color:var(--ink);transition:.15s}
+  .langbtn:hover{border-color:var(--ink);background:#fff}
+
+  .hero{position:relative;overflow:hidden;background:var(--ink);color:#EAF0F6;padding:78px 0 64px}
+  .hero::before{content:"";position:absolute;inset:0;
+    background-image:linear-gradient(var(--grid-ink) 1px,transparent 1px),
+      linear-gradient(90deg,var(--grid-ink) 1px,transparent 1px);background-size:32px 32px;
+    mask-image:radial-gradient(ellipse 80% 70% at 50% 30%,#000 40%,transparent 100%)}
+  .hero .wrap{position:relative}
+  .kicker{font-family:"IBM Plex Mono",monospace;font-size:13px;color:#8FB4DA;letter-spacing:.04em;margin-bottom:20px}
+  .hero h1{font-size:clamp(36px,6.5vw,62px);font-weight:600;line-height:1.04;letter-spacing:-.01em;margin-bottom:20px}
+  .hero h1 .sub{display:block;color:var(--steel);font-weight:500;font-size:.4em;margin-top:14px;letter-spacing:0}
+  .lede{font-size:18px;color:#B7C4D2;max-width:56ch;margin-bottom:34px}
+  .cta-row{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+  .download{display:inline-flex;align-items:center;gap:12px;background:var(--amber);color:#231703;
+    font-weight:700;font-size:17px;padding:16px 28px;border-radius:3px;text-decoration:none;
+    box-shadow:0 0 0 1px var(--amber-dk) inset;transition:transform .12s,background .15s}
+  .download:hover{background:#F2B02A;transform:translateY(-1px)}
+  .download svg{width:20px;height:20px}
+  .dl-meta{font-family:"IBM Plex Mono",monospace;font-size:13px;color:#7E93A8}
+
+  .versions{background:#fff;border-bottom:1px solid var(--line)}
+  .versions .wrap{padding:24px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+  .versions .lbl{font-size:14px;color:var(--muted);font-weight:500}
+  .vlist{display:flex;gap:9px;flex-wrap:wrap}
+  .vtag{font-family:"IBM Plex Mono",monospace;font-size:14px;border:1px solid var(--line);
+    border-radius:2px;padding:6px 11px;background:var(--paper)}
+
+  section.block{padding:66px 0}
+  .head{margin-bottom:36px;max-width:60ch}
+  .head .tag{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--steel);margin-bottom:10px}
+  .head h2{font-size:clamp(25px,4vw,34px);font-weight:600;letter-spacing:-.01em}
+  .head p{color:var(--muted);margin-top:10px;font-size:16px}
+
+  .feat{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--line)}
+  .feat .row{padding:22px;border-bottom:1px solid var(--line);display:flex;gap:15px;align-items:flex-start;background:#fff}
+  .feat .row:nth-child(odd){border-inline-end:1px solid var(--line)}
+  .feat .ix{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--steel);padding-top:3px;flex:none}
+  .feat h3{font-size:16px;font-weight:600;margin-bottom:3px}
+  .feat p{font-size:14px;color:var(--muted)}
+
+  .steps{border:1px solid var(--line);border-radius:3px;overflow:hidden}
+  .step{background:#fff;padding:20px 22px;display:flex;gap:18px;align-items:flex-start}
+  .step:not(:last-child){border-bottom:1px solid var(--line)}
+  .step .n{flex:none;width:30px;height:30px;border-radius:50%;background:var(--ink);color:#fff;
+    display:grid;place-items:center;font-family:"IBM Plex Mono",monospace;font-size:14px}
+  .step h3{font-size:16px;font-weight:600;margin-bottom:3px}
+  .step p{font-size:15px;color:var(--muted)}
+
+  .contact{background:var(--ink);color:#EAF0F6}
+  .contact .wrap{padding:60px 24px}
+  .contact h2{font-size:clamp(23px,4vw,30px);font-weight:600;margin-bottom:8px}
+  .contact p.desc{color:#9FB0C1;margin-bottom:30px;max-width:50ch}
+  .social{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
+  .sc{border:1px solid rgba(255,255,255,.14);border-radius:3px;padding:18px;display:flex;gap:13px;
+    align-items:center;text-decoration:none;color:#EAF0F6;transition:border-color .15s,background .15s}
+  .sc:hover{border-color:var(--amber);background:rgba(255,255,255,.03)}
+  .sc svg{width:26px;height:26px;flex:none}
+  .sc .t{font-size:15px;font-weight:500}
+
+  footer{background:var(--ink);color:#5E7085;border-top:1px solid rgba(255,255,255,.08)}
+  footer .wrap{padding:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:13px}
+  footer a{color:#8FB4DA;text-decoration:none}
+  .note{margin-top:20px;font-size:13.5px;color:#7E93A8;border-inline-start:2px solid var(--steel);
+    padding-inline-start:14px;max-width:58ch;line-height:1.55}
+
+  @media (max-width:680px){
+    .feat{grid-template-columns:1fr}
+    .feat .row:nth-child(odd){border-inline-end:none}
+    section.block{padding:48px 0}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <div class="brand"><span class="mark"></span><span>EMOCAD</span></div>
+    <button class="langbtn" onclick="toggleLang()"><span class="en">العربية</span><span class="ar">English</span></button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="kicker"><span class="en">AutoCAD PLUGIN · v1.0</span><span class="ar">إضافة أوتوكاد · الإصدار 1.0</span></div>
+    <h1>
+      <span class="en">Structural tools,<br>built into AutoCAD.<span class="sub">Design · Rebar · ETABS · Review · QS</span></span>
+      <span class="ar">أدوات إنشائية،<br>داخل أوتوكاد.<span class="sub">تصميم · تسليح · ETABS · مراجعة · حصر</span></span>
+    </h1>
+    <p class="lede">
+      <span class="en">A complete structural detailing, design and review workflow for AutoCAD — from footings and columns to rebar and quantity take-off — driven straight from your ETABS and SAFE models.</span>
+      <span class="ar">منظومة كاملة للتفصيل والتصميم والمراجعة الإنشائية داخل أوتوكاد — من القواعد والأعمدة إلى التسليح وحصر الكميات — مقروءةً مباشرةً من نماذج ETABS و SAFE.</span>
+    </p>
+    <div class="cta-row">
+      <a class="download" href="https://github.com/AhmedTalaatEmam/EMOCAD-Setup/releases/latest/download/EMOCAD_V1_Setup.exe">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+        <span class="en">Download EMOCAD V1</span><span class="ar">تحميل EMOCAD V1</span>
+      </a>
+      <span class="dl-meta"><span class="en">Windows · 56 MB · Setup .exe</span><span class="ar">ويندوز · 56 ميجابايت · ملف تثبيت</span></span>
+    </div>
+  </div>
+</section>
+
+<div class="versions">
+  <div class="wrap">
+    <span class="lbl"><span class="en">Works with AutoCAD</span><span class="ar">يعمل مع أوتوكاد</span></span>
+    <div class="vlist">
+      <span class="vtag">2020</span><span class="vtag">2021</span><span class="vtag">2022</span><span class="vtag">2023</span>
+      <span class="vtag">2024</span><span class="vtag">2025</span><span class="vtag">2026</span><span class="vtag">2027</span>
+    </div>
+  </div>
+</div>
+
+<section class="block wrap">
+  <div class="head">
+    <div class="tag"><span class="en">// WHAT'S INSIDE</span><span class="ar">// المحتوى</span></div>
+    <h2><span class="en">One ribbon, the full workflow</span><span class="ar">ريبون واحد، المنظومة كاملة</span></h2>
+    <p><span class="en">Every module loads automatically when AutoCAD starts.</span><span class="ar">كل قسم يُحمّل تلقائياً عند تشغيل أوتوكاد.</span></p>
+  </div>
+  <div class="feat">
+    <div class="row"><span class="ix">01</span><div><h3><span class="en">Design</span><span class="ar">التصميم</span></h3>
+      <p><span class="en">Footings, columns, beams and walls to ACI 318 / SBC — read from your model.</span><span class="ar">قواعد وأعمدة وجسور وجدران وفق ACI 318 / الكود السعودي — مقروءة من النموذج.</span></p></div></div>
+    <div class="row"><span class="ix">02</span><div><h3><span class="en">Rebar Detailing</span><span class="ar">التسليح والتفصيل</span></h3>
+      <p><span class="en">Beam, slab and column rebar, bar schedules and BBS tables in the DWG.</span><span class="ar">تسليح الجسور والبلاطات والأعمدة، جداول الحديد و BBS في الرسم.</span></p></div></div>
+    <div class="row"><span class="ix">03</span><div><h3><span class="en">ETABS &amp; SAFE</span><span class="ar">تكامل ETABS و SAFE</span></h3>
+      <p><span class="en">Pull forces, geometry and results directly from live analysis models.</span><span class="ar">قراءة القوى والأبعاد والنتائج مباشرة من نماذج التحليل.</span></p></div></div>
+    <div class="row"><span class="ix">04</span><div><h3><span class="en">Design Review</span><span class="ar">مراجعة التصميم</span></h3>
+      <p><span class="en">Read and check modelled footings, columns and slabs against code limits.</span><span class="ar">قراءة ومراجعة القواعد والأعمدة والبلاطات مقابل حدود الكود.</span></p></div></div>
+    <div class="row"><span class="ix">05</span><div><h3><span class="en">Quantity Take-off</span><span class="ar">حصر الكميات</span></h3>
+      <p><span class="en">QS tools for slabs, rebar and elements, exported straight to Excel.</span><span class="ar">أدوات حصر للبلاطات والحديد والعناصر، تُصدَّر مباشرة إلى إكسل.</span></p></div></div>
+    <div class="row"><span class="ix">06</span><div><h3><span class="en">Cost &amp; Drafting</span><span class="ar">التكلفة وأدوات الرسم</span></h3>
+      <p><span class="en">Cost estimation plus smart drafting helpers — grids, tables, selection.</span><span class="ar">تقدير التكلفة وأدوات رسم ذكية — شبكات وجداول واختيار.</span></p></div></div>
+  </div>
+</section>
+
+<section class="block wrap" style="padding-top:0">
+  <div class="head">
+    <div class="tag"><span class="en">// INSTALL</span><span class="ar">// التثبيت</span></div>
+    <h2><span class="en">Up and running in a minute</span><span class="ar">جاهزة خلال دقيقة</span></h2>
+  </div>
+  <div class="steps">
+    <div class="step"><span class="n">1</span><div>
+      <h3><span class="en">Download &amp; run the setup</span><span class="ar">حمّل وشغّل ملف التثبيت</span></h3>
+      <p><span class="en">Run EMOCAD_V1_Setup.exe and allow it when Windows asks for administrator access.</span><span class="ar">شغّل EMOCAD_V1_Setup.exe واسمح له عند طلب ويندوز صلاحية المدير.</span></p></div></div>
+    <div class="step"><span class="n">2</span><div>
+      <h3><span class="en">Pick your AutoCAD versions</span><span class="ar">اختر إصدارات أوتوكاد</span></h3>
+      <p><span class="en">The installer detects installed versions — select all, or just the ones you use.</span><span class="ar">يكتشف المثبّت الإصدارات المثبّتة — اختر الكل أو ما تستعمله فقط.</span></p></div></div>
+    <div class="step"><span class="n">3</span><div>
+      <h3><span class="en">Open AutoCAD</span><span class="ar">افتح أوتوكاد</span></h3>
+      <p><span class="en">The ribbon loads automatically. Type KEE to activate or start the free trial.</span><span class="ar">يظهر الريبون تلقائياً. اكتب KEE للتفعيل أو بدء التجربة المجانية.</span></p></div></div>
+  </div>
+</section>
+
+<section class="contact">
+  <div class="wrap">
+    <h2><span class="en">Follow &amp; get in touch</span><span class="ar">تابعنا وتواصل معنا</span></h2>
+    <p class="desc"><span class="en">Questions, licence keys, or a walkthrough — reach out on any channel.</span><span class="ar">استفسار، مفاتيح ترخيص، أو شرح للأداة — تواصل عبر أي قناة.</span></p>
+    <div class="social">
+      <a class="sc" href="https://wa.me/201034567996?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D9%86%D8%A7%20%D9%85%D9%87%D9%86%D8%AF%D8%B3%20%D9%88%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20EMOCAD" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="#E8A317"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1012 2zm0 2a8 8 0 11-4.2 14.8l-.3-.2-2.8.8.8-2.8-.2-.3A8 8 0 0112 4zm-3 4c-.2 0-.5 0-.7.4-.3.4-1 1-1 2.3s1 2.7 1.2 2.9c.2.2 2 3 4.8 4.1 2.4 1 2.9.8 3.4.7.5 0 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3l-2-1c-.3-.1-.5-.1-.7.2l-.7.9c-.1.2-.3.2-.5.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.1-.3 0-.4.1-.5l.5-.6c.1-.2.1-.3.2-.5 0-.2 0-.3 0-.5l-1-2.2c-.2-.5-.4-.5-.6-.5z"/></svg>
+        <span class="t">WhatsApp</span></a>
+      <a class="sc" href="https://t.me/Emocad" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="#E8A317"><path d="M21.9 4.3L18.5 20c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.2 13 1.4 11.5c-1-.3-1-1 .2-1.5l19-7.3c.9-.3 1.6.2 1.3 1.6z"/></svg>
+        <span class="t">Telegram</span></a>
+      <a class="sc" href="https://www.youtube.com/@EMOCAD-l3g" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="#E8A317"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 00-1.7-1.7C19.3 5.2 12 5.2 12 5.2s-7.3 0-8.9.4A2.5 2.5 0 001.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 001.7 1.7c1.6.4 8.9.4 8.9.4s7.3 0 8.9-.4a2.5 2.5 0 001.7-1.7C23 15.2 23 12 23 12zM9.8 15.3V8.7l6 3.3-6 3.3z"/></svg>
+        <span class="t">YouTube</span></a>
+      <a class="sc" href="https://www.facebook.com/share/19Le7Mbr16/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="#E8A317"><path d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0022 12z"/></svg>
+        <span class="t">Facebook</span></a>
+      <a class="sc" href="https://www.tiktok.com/@engahmedtalaatemam" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="#E8A317"><path d="M16 3c.3 2.1 1.5 3.8 3.6 4.1v2.6c-1.2.1-2.5-.3-3.6-1v6.6c0 3.3-2.4 5.7-5.6 5.7A5.5 5.5 0 015 15.6c0-3.2 2.9-5.6 6.1-5.2v2.7c-.4-.1-.9-.2-1.3-.2-1.5 0-2.6 1.2-2.6 2.7 0 1.6 1.2 2.7 2.7 2.7 1.6 0 2.7-1.2 2.7-2.9V3H16z"/></svg>
+        <span class="t">TikTok</span></a>
+    </div>
+    <p class="note">
+      <span class="en"><strong>First launch:</strong> Windows may show "Windows protected your PC" because this build isn't code-signed yet. Choose <em>More info → Run anyway</em>.</span>
+      <span class="ar"><strong>عند أول تشغيل:</strong> قد يعرض ويندوز شاشة "Windows protected your PC" لأن هذا الإصدار غير موقّع بعد. اختر <em>More info ← Run anyway</em>.</span>
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr"></span> EMOCAD</span>
+    <a href="https://github.com/AhmedTalaatEmam/EMOCAD-Setup/releases" target="_blank" rel="noopener">
+      <span class="en">All releases on GitHub →</span><span class="ar">كل الإصدارات على GitHub ←</span></a>
+  </div>
+</footer>
+
+<script>
+  function toggleLang(){
+    var h=document.documentElement;
+    if(h.lang==="en"){h.lang="ar";h.dir="rtl";}else{h.lang="en";h.dir="ltr";}
+    try{localStorage.setItem("emocad_lang",h.lang);}catch(e){}
+  }
+  try{if(localStorage.getItem("emocad_lang")==="ar"){document.documentElement.lang="ar";document.documentElement.dir="rtl";}}catch(e){}
+  document.getElementById("yr").textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
