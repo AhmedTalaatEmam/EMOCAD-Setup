@@ -11,10 +11,9 @@
   :root{
     --bg:#FFFFFF; --bg-soft:#F5F7FA; --bg-soft2:#EDF1F6;
     --ink:#0F1E2E; --ink-2:#33475B; --ink-3:#5A6B7B;
-    --brand:#0B63CE;            /* corporate blue */
-    --brand-dk:#084A9E; --brand-soft:#E7F0FB;
+    --brand:#0B63CE; --brand-dk:#084A9E; --brand-soft:#E7F0FB;
     --line:#E1E7EE; --line-2:#D3DBE4;
-    --ok:#0E7C4A;
+    --ok:#0E7C4A; --warn:#B7791F;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
@@ -25,7 +24,6 @@
   a{color:inherit;text-decoration:none}
   .wrap{max-width:1120px;margin:0 auto;padding:0 32px}
 
-  /* NAV */
   nav{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
   .nav-in{display:flex;align-items:center;gap:20px;height:64px}
   .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px;letter-spacing:-.01em}
@@ -41,8 +39,7 @@
   .nav-dl:hover{background:var(--brand-dk)}
   @media(max-width:800px){.nav-links{display:none}}
 
-  /* HERO */
-  .hero{padding:80px 0 64px;text-align:center;background:linear-gradient(180deg,#F8FAFD 0%,#fff 100%)}
+  .hero{padding:80px 0 60px;text-align:center;background:linear-gradient(180deg,#F8FAFD 0%,#fff 100%)}
   .pill{display:inline-flex;align-items:center;gap:8px;background:var(--brand-soft);color:var(--brand-dk);font-size:13.5px;font-weight:600;padding:7px 15px;border-radius:100px;margin-bottom:26px}
   .pill .dot{width:7px;height:7px;border-radius:50%;background:var(--brand)}
   h1{font-size:clamp(38px,5.6vw,60px);font-weight:700;line-height:1.08;letter-spacing:-.02em;max-width:16ch;margin:0 auto}
@@ -55,7 +52,10 @@
   .btn-ghost:hover{border-color:var(--brand);color:var(--brand)}
   .hero-meta{margin-top:18px;font-size:13.5px;color:var(--ink-3)}
 
-  /* logos / versions strip */
+  .trust{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+  .tchip{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;color:var(--ink-2);background:#fff;border:1px solid var(--line-2);border-radius:100px;padding:7px 14px}
+  .tchip svg{width:14px;height:14px;color:var(--ok);flex:none}
+
   .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-soft)}
   .strip .wrap{display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;padding:22px 32px}
   .strip .k{font-size:13.5px;color:var(--ink-3);font-weight:500}
@@ -67,7 +67,6 @@
   h2{font-size:clamp(28px,4vw,40px);font-weight:700;letter-spacing:-.015em;line-height:1.12}
   .sub{color:var(--ink-2);font-size:18px;margin-top:14px}
 
-  /* feature cards */
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
   .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:28px;transition:box-shadow .18s,border-color .18s}
   .card:hover{box-shadow:0 8px 30px rgba(15,30,46,.08);border-color:var(--line-2)}
@@ -78,7 +77,6 @@
   @media(max-width:860px){.cards{grid-template-columns:1fr 1fr}}
   @media(max-width:560px){.cards{grid-template-columns:1fr}}
 
-  /* why band */
   .band{background:var(--ink);color:#fff}
   .band .wrap{padding:76px 32px}
   .band h2{color:#fff}
@@ -90,15 +88,21 @@
   .why-row svg{width:19px;height:19px;flex:none;margin-top:1px}
   @media(max-width:720px){.why{grid-template-columns:1fr;gap:20px}}
 
-  /* steps */
-  .stepwrap{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
-  .stepc{text-align:center}
-  .stepc .num{width:44px;height:44px;border-radius:50%;background:var(--brand-soft);color:var(--brand);font-weight:700;font-size:18px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
-  .stepc h3{font-size:17px;font-weight:600;margin-bottom:6px}
-  .stepc p{color:var(--ink-2);font-size:14.5px}
-  @media(max-width:720px){.stepwrap{grid-template-columns:1fr;gap:32px}}
+  #install{background:var(--bg-soft)}
+  .guide{display:flex;flex-direction:column;gap:26px;margin-top:52px}
+  .gstep{display:grid;grid-template-columns:1.05fr 1fr;gap:44px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:34px;transition:box-shadow .18s,border-color .18s}
+  .gstep:hover{box-shadow:0 12px 36px rgba(15,30,46,.07);border-color:var(--line-2)}
+  .gstep:nth-child(even) .gfig{order:-1}
+  .gnum{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;background:var(--brand);color:#fff;font-weight:700;font-size:16px;margin-bottom:16px}
+  .gtext h3{font-size:21px;font-weight:700;margin-bottom:9px;letter-spacing:-.01em}
+  .gtext p{color:var(--ink-2);font-size:15.5px}
+  .gtext .tip{margin-top:14px;font-size:13.5px;color:var(--ink-2);background:var(--brand-soft);border-radius:8px;padding:11px 14px;border-inline-start:3px solid var(--brand)}
+  .gtext .tip.warn{background:#FBF3E3;border-inline-start-color:var(--warn);color:#6b4e12}
+  .gtext .tip b{color:var(--ink)}
+  .gfig{background:linear-gradient(160deg,#EEF3F9 0%,#E5EBF3 100%);border:1px solid var(--line);border-radius:12px;padding:22px;display:flex;align-items:center;justify-content:center;min-height:230px}
+  .gfig svg{width:100%;height:auto;max-width:440px;display:block}
+  @media(max-width:760px){.gstep{grid-template-columns:1fr;gap:22px;padding:24px}.gstep:nth-child(even) .gfig{order:0}}
 
-  /* CTA band */
   .ctaband{background:var(--brand);color:#fff;text-align:center}
   .ctaband .wrap{padding:70px 32px}
   .ctaband h2{color:#fff}
@@ -107,7 +111,6 @@
   .btn-white:hover{background:#EAF2FC}
   .btn-white svg{width:19px;height:19px}
 
-  /* footer */
   footer{background:var(--bg-soft);border-top:1px solid var(--line)}
   footer .wrap{padding:52px 32px}
   .foot-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:28px;margin-bottom:34px}
@@ -118,7 +121,7 @@
   .soc{width:40px;height:40px;border-radius:8px;border:1px solid var(--line-2);background:#fff;display:flex;align-items:center;justify-content:center;color:var(--ink-2);transition:.15s}
   .soc:hover{color:var(--brand);border-color:var(--brand)}
   .soc svg{width:19px;height:19px}
-  .foot-note{font-size:13px;color:var(--ink-3);border-top:1px solid var(--line);padding-top:22px;line-height:1.6;max-width:70ch}
+  .foot-note{font-size:13px;color:var(--ink-3);border-top:1px solid var(--line);padding-top:22px;line-height:1.6;max-width:74ch}
   .foot-bar{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:22px;font-size:13px;color:var(--ink-3)}
   .foot-bar a{color:var(--brand);font-weight:500}
 
@@ -133,12 +136,12 @@
     <div class="nav-links">
       <a href="#features"><span class="en">Features</span><span class="ar">الميزات</span></a>
       <a href="#why"><span class="en">Why EMOCAD</span><span class="ar">لماذا EMOCAD</span></a>
-      <a href="#install"><span class="en">Install</span><span class="ar">التثبيت</span></a>
+      <a href="#install"><span class="en">Download guide</span><span class="ar">دليل التحميل</span></a>
       <a href="#contact"><span class="en">Contact</span><span class="ar">تواصل</span></a>
     </div>
     <div class="nav-right">
       <button class="langbtn" onclick="toggleLang()"><span class="en">العربية</span><span class="ar">English</span></button>
-      <a class="nav-dl" href="https://github.com/AhmedTalaatEmam/EMOCAD-Setup/releases/latest/download/EMOCAD_V1_Setup.exe"><span class="en">Download</span><span class="ar">تحميل</span></a>
+      <a class="nav-dl" href="https://github.com/AhmedTalaatEmam/EMOCAD-Setup/releases/latest/download/EMOCAD_V1_Setup.zip"><span class="en">Download</span><span class="ar">تحميل</span></a>
     </div>
   </div>
 </nav>
@@ -149,13 +152,18 @@
     <h1><span class="en">Structural engineering, built into AutoCAD.</span><span class="ar">الهندسة الإنشائية، داخل أوتوكاد.</span></h1>
     <p><span class="en">A complete detailing, design, review and take-off workflow — reading your ETABS and SAFE models directly into the drawing.</span><span class="ar">منظومة كاملة للتفصيل والتصميم والمراجعة والحصر — تقرأ نماذج ETABS و SAFE مباشرة داخل الرسم.</span></p>
     <div class="hero-cta">
-      <a class="btn-primary" href="https://github.com/AhmedTalaatEmam/EMOCAD-Setup/releases/latest/download/EMOCAD_V1_Setup.exe">
+      <a class="btn-primary" href="https://github.com/AhmedTalaatEmam/EMOCAD-Setup/releases/latest/download/EMOCAD_V1_Setup.zip">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
         <span class="en">Download for Windows</span><span class="ar">تحميل لويندوز</span>
       </a>
-      <a class="btn-ghost" href="#features"><span class="en">See what's inside</span><span class="ar">استعرض الميزات</span></a>
+      <a class="btn-ghost" href="#install"><span class="en">How to install</span><span class="ar">طريقة التثبيت</span></a>
     </div>
-    <div class="hero-meta"><span class="en">Free trial included · Installer 56 MB · AutoCAD 2020–2027</span><span class="ar">تجربة مجانية · المثبّت 56 ميجابايت · أوتوكاد 2020–2027</span></div>
+    <div class="hero-meta"><span class="en">Free trial included · ZIP 56 MB · AutoCAD 2020–2027</span><span class="ar">تجربة مجانية · الملف المضغوط 56 ميجابايت · أوتوكاد 2020–2027</span></div>
+    <div class="trust">
+      <span class="tchip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span class="en">Official GitHub release</span><span class="ar">إصدار GitHub الرسمي</span></span>
+      <span class="tchip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span class="en">SHA-256 checksum provided</span><span class="ar">بصمة SHA-256 مرفقة</span></span>
+      <span class="tchip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span class="en">One machine per key</span><span class="ar">مفتاح لكل جهاز</span></span>
+    </div>
   </div>
 </section>
 
@@ -212,13 +220,253 @@
 <section id="install">
   <div class="wrap">
     <div class="center">
-      <div class="eyebrow"><span class="en">Installation</span><span class="ar">التثبيت</span></div>
-      <h2><span class="en">Up and running in three steps</span><span class="ar">جاهزة في ثلاث خطوات</span></h2>
+      <div class="eyebrow"><span class="en">Download &amp; install</span><span class="ar">التحميل والتثبيت</span></div>
+      <h2><span class="en">From download to ribbon — step by step</span><span class="ar">من التحميل إلى الريبون — خطوة بخطوة</span></h2>
+      <p class="sub"><span class="en">The file is a ZIP so browsers download it without warnings. Follow these six steps.</span><span class="ar">الملف مضغوط (ZIP) لتتجاوز حجب المتصفحات. اتبع الخطوات الست.</span></p>
     </div>
-    <div class="stepwrap">
-      <div class="stepc"><div class="num">1</div><h3><span class="en">Run the installer</span><span class="ar">شغّل المثبّت</span></h3><p><span class="en">Open the setup and allow it when Windows asks for administrator access.</span><span class="ar">افتح المثبّت واسمح له عند طلب صلاحية المدير.</span></p></div>
-      <div class="stepc"><div class="num">2</div><h3><span class="en">Choose your versions</span><span class="ar">اختر إصداراتك</span></h3><p><span class="en">The installer detects installed AutoCAD versions — select all, or only yours.</span><span class="ar">يكتشف المثبّت إصدارات أوتوكاد — اختر الكل أو ما تستعمله.</span></p></div>
-      <div class="stepc"><div class="num">3</div><h3><span class="en">Open AutoCAD</span><span class="ar">افتح أوتوكاد</span></h3><p><span class="en">The ribbon loads automatically. Type KEE to activate or start the trial.</span><span class="ar">يظهر الريبون تلقائياً. اكتب KEE للتفعيل أو بدء التجربة.</span></p></div>
+
+    <div class="guide">
+
+      <!-- 1 DOWNLOAD -->
+      <div class="gstep">
+        <div class="gtext">
+          <div class="gnum">1</div>
+          <h3><span class="en">Download the ZIP</span><span class="ar">حمّل الملف المضغوط</span></h3>
+          <p><span class="en">Click Download. Your browser saves <b>EMOCAD_V1_Setup.zip</b> (about 56 MB) to your Downloads folder.</span><span class="ar">اضغط تحميل. يحفظ المتصفح ملف <b>EMOCAD_V1_Setup.zip</b> (حوالي 56 ميجابايت) في مجلد التنزيلات.</span></p>
+          <div class="tip"><span class="en"><b>Tip:</b> the download comes straight from the official GitHub release page.</span><span class="ar"><b>ملاحظة:</b> التحميل مباشر من صفحة إصدار GitHub الرسمية.</span></div>
+        </div>
+        <div class="gfig">
+          <svg viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Browser downloading the ZIP">
+            <defs>
+              <filter id="s1" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="7" stdDeviation="10" flood-color="#0F1E2E" flood-opacity="0.14"/></filter>
+              <filter id="s1b" x="-60%" y="-60%" width="220%" height="220%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0F1E2E" flood-opacity="0.12"/></filter>
+              <linearGradient id="ring1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B63CE"/><stop offset="1" stop-color="#3F8AE0"/></linearGradient>
+            </defs>
+            <g filter="url(#s1)"><rect x="32" y="30" width="396" height="240" rx="16" fill="#fff"/></g>
+            <path d="M32 46a16 16 0 0116-16h364a16 16 0 0116 16v24H32z" fill="#F1F4F8"/>
+            <line x1="32" y1="70" x2="428" y2="70" stroke="#E3E9F0"/>
+            <circle cx="56" cy="50" r="5.5" fill="#EC6A6A"/><circle cx="76" cy="50" r="5.5" fill="#F2C14E"/><circle cx="96" cy="50" r="5.5" fill="#68C583"/>
+            <rect x="124" y="39" width="280" height="23" rx="11.5" fill="#fff" stroke="#E1E7EE"/>
+            <path d="M141 47a5 5 0 0110 0" fill="none" stroke="#8494A3" stroke-width="1.5"/><rect x="138" y="47" width="16" height="10" rx="2" fill="#8494A3"/>
+            <text x="162" y="54" font-family="Inter,Arial,sans-serif" font-size="11" fill="#5A6B7B">github.com/AhmedTalaatEmam/EMOCAD-Setup</text>
+            <rect x="64" y="98" width="332" height="86" rx="13" fill="#F8FAFD" stroke="#E4EAF1"/>
+            <g filter="url(#s1b)"><rect x="84" y="116" width="46" height="50" rx="8" fill="#fff"/></g>
+            <path d="M84 124a8 8 0 018-8h30v50a8 8 0 01-8 8H92a8 8 0 01-8-8z" fill="#fff" stroke="#CFD9E4"/>
+            <rect x="103" y="116" width="9" height="50" fill="#0B63CE" opacity=".14"/>
+            <g fill="#0B63CE"><rect x="104" y="123" width="7" height="5" rx="1.2"/><rect x="104" y="133" width="7" height="5" rx="1.2"/><rect x="104" y="143" width="7" height="5" rx="1.2"/><rect x="104" y="153" width="7" height="5" rx="1.2"/></g>
+            <text x="146" y="134" font-family="Inter,Arial,sans-serif" font-size="14.5" font-weight="700" fill="#0F1E2E">EMOCAD_V1_Setup.zip</text>
+            <text x="146" y="155" font-family="Inter,Arial,sans-serif" font-size="12" fill="#5A6B7B">56 MB · ZIP archive</text>
+            <circle cx="362" cy="141" r="18" fill="none" stroke="#E3E9F0" stroke-width="4.5"/>
+            <circle cx="362" cy="141" r="18" fill="none" stroke="url(#ring1)" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="113" stroke-dashoffset="1.5" transform="rotate(-90 362 141)"/>
+            <path d="M355 141l5 5 9-10" fill="none" stroke="#0B63CE" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <g filter="url(#s1b)"><rect x="64" y="206" width="214" height="48" rx="11" fill="#fff"/></g>
+            <circle cx="92" cy="230" r="14" fill="#E9F5EE"/>
+            <path d="M92 224v8m0 0l-3.7-3.7M92 232l3.7-3.7M84.5 237h15" stroke="#0E7C4A" stroke-width="2.1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="116" y="226" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="700" fill="#0F1E2E">EMOCAD_V1_Setup.zip</text>
+            <rect x="116" y="234" width="140" height="7" rx="3.5" fill="#E6EBF1"/><rect x="116" y="234" width="140" height="7" rx="3.5" fill="#0E7C4A"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- 2 EXTRACT -->
+      <div class="gstep">
+        <div class="gtext">
+          <div class="gnum">2</div>
+          <h3><span class="en">Extract the ZIP</span><span class="ar">فُكّ الضغط</span></h3>
+          <p><span class="en">Right-click the downloaded file and choose <b>Extract All</b>. A file called <b>EMOCAD_V1_Setup.exe</b> appears.</span><span class="ar">انقر يمين على الملف واختر <b>Extract All / استخراج الكل</b>. يظهر ملف باسم <b>EMOCAD_V1_Setup.exe</b>.</span></p>
+          <div class="tip"><span class="en"><b>Tip:</b> Windows extracts ZIP files on its own — no extra program needed.</span><span class="ar"><b>ملاحظة:</b> ويندوز يفكّ ملفات ZIP بنفسه — بلا برنامج إضافي.</span></div>
+        </div>
+        <div class="gfig">
+          <svg viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Extract All context menu">
+            <defs>
+              <filter id="s2" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="6" stdDeviation="9" flood-color="#0F1E2E" flood-opacity="0.15"/></filter>
+              <filter id="s2b" x="-60%" y="-60%" width="220%" height="220%"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0F1E2E" flood-opacity="0.13"/></filter>
+            </defs>
+            <g filter="url(#s2b)"><path d="M40 118a8 8 0 018-8h26l8 9h0v58a8 8 0 01-8 8H48a8 8 0 01-8-8z" fill="#fff" stroke="#CFD9E4"/></g>
+            <rect x="70" y="110" width="11" height="65" fill="#0B63CE" opacity=".14"/>
+            <g fill="#0B63CE"><rect x="71" y="118" width="8" height="6" rx="1.4"/><rect x="71" y="130" width="8" height="6" rx="1.4"/><rect x="71" y="142" width="8" height="6" rx="1.4"/></g>
+            <rect x="53" y="150" width="26" height="16" rx="3" fill="#0B63CE"/><text x="58" y="162" font-family="Inter,Arial,sans-serif" font-size="9" font-weight="700" fill="#fff">ZIP</text>
+            <text x="34" y="192" font-family="Inter,Arial,sans-serif" font-size="11.5" font-weight="600" fill="#33475B">Setup.zip</text>
+            <g filter="url(#s2)"><rect x="138" y="60" width="178" height="176" rx="13" fill="#fff"/></g>
+            <text x="156" y="86" font-family="Inter,Arial,sans-serif" font-size="11.5" font-weight="600" fill="#8494A3">Open</text>
+            <line x1="150" y1="98" x2="304" y2="98" stroke="#EEF2F6"/>
+            <rect x="150" y="106" width="154" height="30" rx="8" fill="#0B63CE"/>
+            <path d="M166 115l6 6-6 6M162 121h10" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="186" y="125" font-family="Inter,Arial,sans-serif" font-size="12.5" font-weight="700" fill="#fff">Extract All…</text>
+            <text x="156" y="158" font-family="Inter,Arial,sans-serif" font-size="12" fill="#5A6B7B">Cut</text>
+            <text x="156" y="182" font-family="Inter,Arial,sans-serif" font-size="12" fill="#5A6B7B">Copy</text>
+            <line x1="150" y1="196" x2="304" y2="196" stroke="#EEF2F6"/>
+            <text x="156" y="220" font-family="Inter,Arial,sans-serif" font-size="12" fill="#5A6B7B">Properties</text>
+            <path d="M300 168l14 0m0 0l-6-5m6 5l-6 5" stroke="#0B63CE" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <g filter="url(#s2b)"><rect x="356" y="132" width="64" height="72" rx="10" fill="#fff"/></g>
+            <rect x="356" y="132" width="64" height="72" rx="10" fill="none" stroke="#CFD9E4"/>
+            <circle cx="388" cy="164" r="15" fill="#E7F0FB"/>
+            <path d="M388 154v20M378 164h20M381 157l14 14M395 157l-14 14" stroke="#0B63CE" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="388" cy="164" r="5" fill="#fff" stroke="#0B63CE" stroke-width="2"/>
+            <text x="360" y="220" font-family="Inter,Arial,sans-serif" font-size="10.5" font-weight="600" fill="#33475B">Setup.exe</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- 3 WINDOWS WARNING -->
+      <div class="gstep">
+        <div class="gtext">
+          <div class="gnum">3</div>
+          <h3><span class="en">Run it, then “Run anyway”</span><span class="ar">شغّله ثم “Run anyway”</span></h3>
+          <p><span class="en">Double-click the setup. If Windows shows a blue “Windows protected your PC” screen, click <b>More info</b> then <b>Run anyway</b>.</span><span class="ar">انقر مرتين على المثبّت. لو ظهرت شاشة زرقاء “Windows protected your PC”، اضغط <b>More info</b> ثم <b>Run anyway</b>.</span></p>
+          <div class="tip warn"><span class="en"><b>Normal for new tools:</b> the warning appears because the app isn't code-signed yet — it's safe. You can also scan it on VirusTotal.</span><span class="ar"><b>طبيعي للأدوات الجديدة:</b> التحذير يظهر لأن البرنامج غير موقّع بعد — وهو آمن. تقدر تفحصه على VirusTotal.</span></div>
+        </div>
+        <div class="gfig">
+          <svg viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Windows SmartScreen prompt">
+            <defs><filter id="s3" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0F1E2E" flood-opacity="0.16"/></filter></defs>
+            <rect x="70" y="24" width="320" height="200" rx="12" fill="#E9EEF4" opacity=".55"/>
+            <g filter="url(#s3)"><rect x="58" y="42" width="344" height="216" rx="14" fill="#fff"/></g>
+            <path d="M58 56a14 14 0 0114-14h316a14 14 0 0114 14v46H58z" fill="#0B63CE"/>
+            <path d="M96 62l14-5 14 5v9c0 9-6 14-14 18-8-4-14-9-14-18z" fill="#fff"/>
+            <path d="M103 71l4 4 8-8" fill="none" stroke="#0B63CE" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="136" y="70" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#fff">Windows protected</text>
+            <text x="136" y="90" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#fff">your PC</text>
+            <text x="82" y="138" font-family="Inter,Arial,sans-serif" font-size="12.5" fill="#33475B">Microsoft Defender SmartScreen prevented an</text>
+            <text x="82" y="158" font-family="Inter,Arial,sans-serif" font-size="12.5" fill="#33475B">unrecognized app from starting.</text>
+            <text x="82" y="188" font-family="Inter,Arial,sans-serif" font-size="12.5" font-weight="700" fill="#0B63CE">More info</text>
+            <rect x="82" y="190" width="60" height="1.5" fill="#0B63CE"/>
+            <rect x="196" y="212" width="102" height="32" rx="7" fill="#0B63CE"/>
+            <text x="216" y="233" font-family="Inter,Arial,sans-serif" font-size="12.5" font-weight="700" fill="#fff">Run anyway</text>
+            <rect x="306" y="212" width="80" height="32" rx="7" fill="#F2F5F8" stroke="#D3DBE4"/>
+            <text x="324" y="233" font-family="Inter,Arial,sans-serif" font-size="12.5" font-weight="600" fill="#5A6B7B">Don't run</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- 4 UAC -->
+      <div class="gstep">
+        <div class="gtext">
+          <div class="gnum">4</div>
+          <h3><span class="en">Allow administrator access</span><span class="ar">اسمح بصلاحية المدير</span></h3>
+          <p><span class="en">Windows asks permission to make changes. Click <b>Yes</b> — the installer needs it to register the ribbon for AutoCAD.</span><span class="ar">يطلب ويندوز إذناً بإجراء تغييرات. اضغط <b>Yes / نعم</b> — المثبّت يحتاجها لتسجيل الريبون في أوتوكاد.</span></p>
+        </div>
+        <div class="gfig">
+          <svg viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="User Account Control prompt">
+            <defs><filter id="s4" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0F1E2E" flood-opacity="0.16"/></filter></defs>
+            <g filter="url(#s4)"><rect x="86" y="46" width="288" height="208" rx="12" fill="#fff"/></g>
+            <path d="M86 58a12 12 0 0112-12h264a12 12 0 0112 12v34H86z" fill="#F5F7FA"/>
+            <line x1="86" y1="92" x2="374" y2="92" stroke="#E6EBF1"/>
+            <text x="106" y="76" font-family="Inter,Arial,sans-serif" font-size="13.5" font-weight="700" fill="#0F1E2E">User Account Control</text>
+            <path d="M348 62l16 16m0-16l-16 16" stroke="#9AA7B4" stroke-width="1.6" stroke-linecap="round"/>
+            <circle cx="132" cy="146" r="26" fill="#EAF1FB"/>
+            <path d="M132 128l16-6v16c0 11-7 17-16 21-9-4-16-10-16-21v-16z" fill="#0B63CE"/>
+            <path d="M126 148l4 4 9-9" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="172" y="134" font-family="Inter,Arial,sans-serif" font-size="13.5" font-weight="700" fill="#0F1E2E">Do you want to allow this app</text>
+            <text x="172" y="154" font-family="Inter,Arial,sans-serif" font-size="13.5" font-weight="700" fill="#0F1E2E">to make changes to your device?</text>
+            <text x="172" y="180" font-family="Inter,Arial,sans-serif" font-size="11.5" fill="#5A6B7B">EMOCAD_V1_Setup.exe</text>
+            <line x1="106" y1="202" x2="354" y2="202" stroke="#EEF2F6"/>
+            <rect x="212" y="214" width="66" height="30" rx="6" fill="#0B63CE"/>
+            <text x="237" y="234" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="700" fill="#fff">Yes</text>
+            <rect x="286" y="214" width="66" height="30" rx="6" fill="#F2F5F8" stroke="#D3DBE4"/>
+            <text x="313" y="234" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="600" fill="#5A6B7B">No</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- 5 CHOOSE VERSIONS -->
+      <div class="gstep">
+        <div class="gtext">
+          <div class="gnum">5</div>
+          <h3><span class="en">Choose your AutoCAD versions</span><span class="ar">اختر إصدارات أوتوكاد</span></h3>
+          <p><span class="en">The installer detects the AutoCAD versions on your PC. Select all, or only the ones you use, then continue to the end.</span><span class="ar">يكتشف المثبّت إصدارات أوتوكاد على جهازك. اختر الكل أو ما تستعمله فقط، ثم أكمل حتى النهاية.</span></p>
+        </div>
+        <div class="gfig">
+          <svg viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="EMOCAD setup version picker">
+            <defs>
+              <filter id="s5" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0F1E2E" flood-opacity="0.15"/></filter>
+              <linearGradient id="hdr5" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0B63CE"/><stop offset="1" stop-color="#0A57B4"/></linearGradient>
+            </defs>
+            <g filter="url(#s5)"><rect x="44" y="34" width="372" height="232" rx="13" fill="#fff"/></g>
+            <path d="M44 47a13 13 0 0113-13h346a13 13 0 0113 13v41H44z" fill="url(#hdr5)"/>
+            <rect x="64" y="50" width="28" height="28" rx="7" fill="#fff" opacity=".16"/>
+            <text x="71" y="63" font-family="Inter,Arial,sans-serif" font-size="9" font-weight="700" fill="#fff">EMO</text>
+            <text x="71" y="73" font-family="Inter,Arial,sans-serif" font-size="9" font-weight="700" fill="#F2C14E">CAD</text>
+            <text x="104" y="60" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="700" fill="#fff">EMOCAD Setup</text>
+            <text x="104" y="77" font-family="Inter,Arial,sans-serif" font-size="11" fill="#CFE2F8">Select your AutoCAD versions</text>
+            <g font-family="Inter,Arial,sans-serif" font-size="12.5" font-weight="600" fill="#0F1E2E">
+              <rect x="68" y="106" width="152" height="34" rx="8" fill="#EEF5FD"/>
+              <rect x="80" y="115" width="17" height="17" rx="4.5" fill="#0B63CE"/><path d="M84 123l3 3 6-6" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="106" y="128">AutoCAD 2023</text>
+              <rect x="240" y="106" width="152" height="34" rx="8" fill="#EEF5FD"/>
+              <rect x="252" y="115" width="17" height="17" rx="4.5" fill="#0B63CE"/><path d="M256 123l3 3 6-6" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="278" y="128">AutoCAD 2024</text>
+              <rect x="68" y="148" width="152" height="34" rx="8" fill="#EEF5FD"/>
+              <rect x="80" y="157" width="17" height="17" rx="4.5" fill="#0B63CE"/><path d="M84 165l3 3 6-6" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="106" y="170">AutoCAD 2025</text>
+              <rect x="240" y="148" width="152" height="34" rx="8" fill="#F6F8FB"/>
+              <rect x="252" y="157" width="17" height="17" rx="4.5" fill="#fff" stroke="#CBD6E2" stroke-width="1.6"/><text x="278" y="170" fill="#9AA7B4">AutoCAD 2026</text>
+            </g>
+            <line x1="68" y1="204" x2="392" y2="204" stroke="#EEF2F6"/>
+            <text x="68" y="234" font-family="Inter,Arial,sans-serif" font-size="11.5" fill="#8494A3">3 of 4 selected</text>
+            <rect x="298" y="220" width="94" height="34" rx="8" fill="#0B63CE"/>
+            <text x="330" y="242" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="700" fill="#fff">Next ›</text>
+            <rect x="212" y="220" width="78" height="34" rx="8" fill="#F2F5F8" stroke="#D3DBE4"/>
+            <text x="232" y="242" font-family="Inter,Arial,sans-serif" font-size="12.5" font-weight="600" fill="#5A6B7B">‹ Back</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- 6 RIBBON + KEE -->
+      <div class="gstep">
+        <div class="gtext">
+          <div class="gnum">6</div>
+          <h3><span class="en">Open AutoCAD &amp; activate</span><span class="ar">افتح أوتوكاد وفعّل</span></h3>
+          <p><span class="en">Open AutoCAD — the EMOCAD ribbon loads automatically. Type <b>KEE</b> to open the licence window and activate, or start the free trial.</span><span class="ar">افتح أوتوكاد — يظهر ريبون EMOCAD تلقائياً. اكتب الأمر <b>KEE</b> لفتح نافذة الترخيص والتفعيل، أو ابدأ التجربة المجانية.</span></p>
+          <div class="tip"><span class="en"><b>Ribbon missing after switching workspace?</b> Type <b>EMORIBBON</b> to bring it back.</span><span class="ar"><b>اختفى الريبون بعد تبديل مساحة العمل؟</b> اكتب <b>EMORIBBON</b> لإرجاعه.</span></div>
+        </div>
+        <div class="gfig">
+          <svg viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="EMOCAD ribbon in AutoCAD with KEE command">
+            <defs>
+              <filter id="s6" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="7" stdDeviation="10" flood-color="#0F1E2E" flood-opacity="0.14"/></filter>
+              <filter id="s6b" x="-60%" y="-60%" width="220%" height="220%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0F1E2E" flood-opacity="0.18"/></filter>
+            </defs>
+            <g filter="url(#s6)"><rect x="26" y="34" width="408" height="232" rx="12" fill="#fff"/></g>
+            <path d="M26 46a12 12 0 0112-12h384a12 12 0 0112 12v18H26z" fill="#33414F"/>
+            <circle cx="46" cy="49" r="4.5" fill="#EC6A6A"/><circle cx="62" cy="49" r="4.5" fill="#F2C14E"/><circle cx="78" cy="49" r="4.5" fill="#68C583"/>
+            <text x="200" y="53" font-family="Inter,Arial,sans-serif" font-size="10.5" fill="#C4CDD6">Drawing1.dwg — AutoCAD</text>
+            <rect x="26" y="64" width="408" height="26" fill="#EEF1F5"/>
+            <text x="42" y="81" font-family="Inter,Arial,sans-serif" font-size="10.5" font-weight="500" fill="#6B7885">Home</text>
+            <text x="86" y="81" font-family="Inter,Arial,sans-serif" font-size="10.5" font-weight="500" fill="#6B7885">Insert</text>
+            <text x="132" y="81" font-family="Inter,Arial,sans-serif" font-size="10.5" font-weight="500" fill="#6B7885">Annotate</text>
+            <rect x="190" y="66" width="74" height="24" rx="4" fill="#fff"/>
+            <rect x="190" y="88" width="74" height="3" fill="#0B63CE"/>
+            <text x="200" y="82" font-family="Inter,Arial,sans-serif" font-size="10.5" font-weight="700" fill="#0B63CE">EMOCAD</text>
+            <rect x="26" y="90" width="408" height="86" fill="#F7F9FC"/>
+            <g>
+              <g filter="url(#s6b)"><rect x="44" y="102" width="50" height="50" rx="9" fill="#fff"/></g>
+              <rect x="56" y="112" width="26" height="26" rx="3" fill="none" stroke="#0B63CE" stroke-width="2"/><path d="M56 124h26M69 112v26" stroke="#0B63CE" stroke-width="2"/>
+              <text x="52" y="166" font-family="Inter,Arial,sans-serif" font-size="8.5" fill="#5A6B7B">Design</text>
+
+              <g filter="url(#s6b)"><rect x="104" y="102" width="50" height="50" rx="9" fill="#fff"/></g>
+              <path d="M116 116h26M116 127h26M116 138h18" stroke="#0B63CE" stroke-width="2.4" stroke-linecap="round"/>
+              <text x="112" y="166" font-family="Inter,Arial,sans-serif" font-size="8.5" fill="#5A6B7B">Rebar</text>
+
+              <g filter="url(#s6b)"><rect x="164" y="102" width="50" height="50" rx="9" fill="#fff"/></g>
+              <path d="M176 114v24M176 138h24" stroke="#0B63CE" stroke-width="2"/><path d="M181 132l6-8 5 5 6-10" fill="none" stroke="#0B63CE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="170" y="166" font-family="Inter,Arial,sans-serif" font-size="8.5" fill="#5A6B7B">ETABS</text>
+
+              <g filter="url(#s6b)"><rect x="224" y="102" width="50" height="50" rx="9" fill="#fff"/></g>
+              <path d="M236 116h26v22h-26zM236 124h26M247 124v14" stroke="#0B63CE" stroke-width="1.8" fill="none"/>
+              <text x="232" y="166" font-family="Inter,Arial,sans-serif" font-size="8.5" fill="#5A6B7B">Take-off</text>
+            </g>
+            <text x="292" y="145" font-family="Inter,Arial,sans-serif" font-size="9.5" fill="#AEB8C2">EMOCAD tools</text>
+            <rect x="26" y="176" width="408" height="60" fill="#20303F"/>
+            <text x="42" y="200" font-family="'Courier New',monospace" font-size="12.5" fill="#8FE3B0">Command:</text>
+            <text x="112" y="200" font-family="'Courier New',monospace" font-size="12.5" font-weight="700" fill="#EAF6EF">KEE</text>
+            <rect x="146" y="190" width="2.5" height="13" fill="#8FE3B0"><animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/></rect>
+            <text x="42" y="222" font-family="'Courier New',monospace" font-size="11" fill="#5E7789">Opening EMOCAD license…</text>
+            <g filter="url(#s6)"><rect x="300" y="150" width="118" height="74" rx="10" fill="#fff"/></g>
+            <rect x="300" y="150" width="118" height="26" rx="10" fill="#0E5C4A"/><rect x="300" y="164" width="118" height="12" fill="#0E5C4A"/>
+            <text x="314" y="167" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="700" fill="#DFF5EC">EMOCAD — License</text>
+            <circle cx="318" cy="198" r="10" fill="#E9F5EE"/><path d="M313 198l4 4 7-8" stroke="#0E7C4A" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="336" y="195" font-family="Inter,Arial,sans-serif" font-size="10.5" font-weight="700" fill="#0F1E2E">Activated</text>
+            <text x="336" y="210" font-family="Inter,Arial,sans-serif" font-size="9" fill="#5A6B7B">357 days left</text>
+          </svg>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -226,8 +474,8 @@
 <section class="ctaband" style="padding:0">
   <div class="wrap">
     <h2><span class="en">Start with a free trial today</span><span class="ar">ابدأ بتجربة مجانية اليوم</span></h2>
-    <p><span class="en">Download, install, and the EMOCAD ribbon is ready in AutoCAD.</span><span class="ar">حمّل وثبّت، ويصير ريبون EMOCAD جاهزاً في أوتوكاد.</span></p>
-    <a class="btn-white" href="https://github.com/AhmedTalaatEmam/EMOCAD-Setup/releases/latest/download/EMOCAD_V1_Setup.exe">
+    <p><span class="en">Download, extract, install — and the EMOCAD ribbon is ready in AutoCAD.</span><span class="ar">حمّل وفُكّ الضغط وثبّت، ويصير ريبون EMOCAD جاهزاً في أوتوكاد.</span></p>
+    <a class="btn-white" href="https://github.com/AhmedTalaatEmam/EMOCAD-Setup/releases/latest/download/EMOCAD_V1_Setup.zip">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
       <span class="en">Download EMOCAD</span><span class="ar">تحميل EMOCAD</span>
     </a>
@@ -251,8 +499,8 @@
       </div>
     </div>
     <p class="foot-note">
-      <span class="en">On first launch Windows may show “Windows protected your PC” because this build isn't code-signed yet. Choose “More info”, then “Run anyway”. The download is served from the official GitHub release.</span>
-      <span class="ar">عند أول تشغيل قد يعرض ويندوز “Windows protected your PC” لأن هذا الإصدار غير موقّع بعد. اختر “More info” ثم “Run anyway”. التحميل من إصدار GitHub الرسمي.</span>
+      <span class="en">On first launch Windows may show “Windows protected your PC” because this build isn't code-signed yet. Choose “More info”, then “Run anyway”. The download is served from the official GitHub release, and a SHA-256 checksum is published with every release.</span>
+      <span class="ar">عند أول تشغيل قد يعرض ويندوز “Windows protected your PC” لأن هذا الإصدار غير موقّع بعد. اختر “More info” ثم “Run anyway”. التحميل من إصدار GitHub الرسمي، ومرفق مع كل إصدار بصمة SHA-256 للتحقق.</span>
     </p>
     <div class="foot-bar">
       <span>© <span id="yr"></span> EMOCAD</span>
