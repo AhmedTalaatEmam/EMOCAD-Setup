@@ -126,6 +126,29 @@
   .foot-bar a{color:var(--brand);font-weight:500}
 
   @media(max-width:720px){section{padding:58px 0}.band .wrap,.ctaband .wrap{padding:52px 32px}}
+
+  /* ── Pricing ── */
+  #pricing{background:var(--bg-soft)}
+  .offer{display:flex;align-items:center;justify-content:center;gap:14px;background:linear-gradient(90deg,var(--brand),var(--brand-dk));color:#fff;border-radius:12px;padding:16px 24px;max-width:780px;margin:0 auto 44px;text-align:center;flex-wrap:wrap}
+  .offer b{font-size:17px;font-weight:700}
+  .offer .pct{background:#fff;color:var(--brand-dk);font-weight:800;border-radius:8px;padding:5px 13px;font-size:16px;white-space:nowrap}
+  .prices{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+  .pcard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px;display:flex;flex-direction:column}
+  .pcard.feat{border:2px solid var(--brand);box-shadow:0 10px 34px rgba(11,99,206,.12)}
+  .pbadge{align-self:flex-start;font-size:12px;font-weight:700;color:#fff;background:var(--brand);border-radius:6px;padding:3px 10px;margin-bottom:12px}
+  .pname{font-size:20px;font-weight:700;margin-bottom:16px}
+  .psecs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px}
+  .psecs span{font-size:12px;font-weight:600;color:var(--brand-dk);background:var(--brand-soft);border-radius:6px;padding:3px 9px}
+  .ptiers{display:flex;flex-direction:column;gap:11px;margin-bottom:24px}
+  .ptier{display:flex;align-items:baseline;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding-top:11px}
+  .ptier:first-child{border-top:none;padding-top:0}
+  .ptier .lbl{font-size:14px;color:var(--ink-2);font-weight:500}
+  .ptier .amt{font-size:22px;font-weight:800;color:var(--ink);letter-spacing:-.01em}
+  .pbtn{margin-top:auto;display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--ok);color:#fff;font-size:15px;font-weight:600;padding:13px;border-radius:9px}
+  .pbtn:hover{filter:brightness(1.08)}
+  .pbtn svg{width:18px;height:18px;flex:none}
+  .pnote{text-align:center;color:var(--ink-3);font-size:13.5px;margin-top:28px;max-width:70ch;margin-inline:auto}
+  @media(max-width:860px){.prices{grid-template-columns:1fr;max-width:460px;margin:0 auto}}
 </style>
 </head>
 <body>
@@ -136,29 +159,30 @@
     <div class="nav-links">
       <a href="#features"><span class="en">Features</span><span class="ar">الميزات</span></a>
       <a href="#why"><span class="en">Why EMOCAD</span><span class="ar">لماذا EMOCAD</span></a>
+      <a href="#pricing"><span class="en">Pricing</span><span class="ar">الأسعار</span></a>
       <a href="#install"><span class="en">Download guide</span><span class="ar">دليل التحميل</span></a>
       <a href="#contact"><span class="en">Contact</span><span class="ar">تواصل</span></a>
     </div>
     <div class="nav-right">
       <button class="langbtn" onclick="toggleLang()"><span class="en">العربية</span><span class="ar">English</span></button>
-      <a class="nav-dl" href="https://github.com/AhmedTalaatEmam/EMOCAD-Setup/releases/latest/download/EMOCAD_V1_Setup.zip"><span class="en">Download</span><span class="ar">تحميل</span></a>
+      <a class="nav-dl" href="https://github.com/AhmedTalaatEmam/EMOCAD-Setup/releases/latest/download/EMOCAD_V2_Setup.zip"><span class="en">Download</span><span class="ar">تحميل</span></a>
     </div>
   </div>
 </nav>
 
 <section class="hero">
   <div class="wrap">
-    <div class="pill"><span class="dot"></span><span class="en">Version 1.2.0 — now available</span><span class="ar">الإصدار 1.2.0 — متاح الآن</span></div>
+    <div class="pill"><span class="dot"></span><span class="en">Version 2.0.26 — now available</span><span class="ar">الإصدار 2.0.26 — متاح الآن</span></div>
     <h1><span class="en">Structural engineering, built into AutoCAD.</span><span class="ar">الهندسة الإنشائية، داخل أوتوكاد.</span></h1>
     <p><span class="en">A complete detailing, design, review and take-off workflow — reading your ETABS and SAFE models directly into the drawing.</span><span class="ar">منظومة كاملة للتفصيل والتصميم والمراجعة والحصر — تقرأ نماذج ETABS و SAFE مباشرة داخل الرسم.</span></p>
     <div class="hero-cta">
-      <a class="btn-primary" href="https://github.com/AhmedTalaatEmam/EMOCAD-Setup/releases/latest/download/EMOCAD_V1_Setup.zip">
+      <a class="btn-primary" href="https://github.com/AhmedTalaatEmam/EMOCAD-Setup/releases/latest/download/EMOCAD_V2_Setup.zip">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
         <span class="en">Download for Windows</span><span class="ar">تحميل لويندوز</span>
       </a>
       <a class="btn-ghost" href="#install"><span class="en">How to install</span><span class="ar">طريقة التثبيت</span></a>
     </div>
-    <div class="hero-meta"><span class="en">Free trial included · ZIP 56 MB · AutoCAD 2020–2027</span><span class="ar">تجربة مجانية · الملف المضغوط 56 ميجابايت · أوتوكاد 2020–2027</span></div>
+    <div class="hero-meta"><span class="en">Free trial included · ZIP ~70 MB · AutoCAD 2020–2027</span><span class="ar">تجربة مجانية · الملف المضغوط ~70 ميجابايت · أوتوكاد 2020–2027</span></div>
     <div class="trust">
       <span class="tchip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span class="en">Official GitHub release</span><span class="ar">إصدار GitHub الرسمي</span></span>
       <span class="tchip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span class="en">SHA-256 checksum provided</span><span class="ar">بصمة SHA-256 مرفقة</span></span>
@@ -217,6 +241,94 @@
   </div>
 </section>
 
+<section id="pricing">
+  <div class="wrap">
+    <div class="center">
+      <div class="eyebrow"><span class="en">Pricing</span><span class="ar">الأسعار</span></div>
+      <h2><span class="en">Packages &amp; prices</span><span class="ar">الباقات والأسعار</span></h2>
+      <p class="sub"><span class="en">Three packages, three durations. Prices in US Dollars.</span><span class="ar">ثلاث باقات وثلاث مدد. الأسعار بالدولار الأمريكي.</span></p>
+    </div>
+
+    <div class="offer">
+      <b><span class="en">To celebrate the biggest EMOCAD update — prices cut by 75%</span><span class="ar">بمناسبة انطلاق أقوى تحديث EMOCAD تم خفض الأسعار بنسبة 75%</span></b>
+      <span class="pct">-75%</span>
+    </div>
+
+    <div class="prices">
+
+      <!-- Full bundle (featured) -->
+      <div class="pcard feat">
+        <span class="pbadge"><span class="en">Best value</span><span class="ar">الأفضل</span></span>
+        <div class="pname"><span class="en">Full Bundle</span><span class="ar">الباقة الشاملة</span></div>
+        <div class="psecs">
+          <span><span class="en">Editing</span><span class="ar">التحرير</span></span>
+          <span><span class="en">Extra</span><span class="ar">الإضافية</span></span>
+          <span><span class="en">Rebar</span><span class="ar">التسليح</span></span>
+          <span><span class="en">QS</span><span class="ar">الحصر</span></span>
+          <span><span class="en">ETABS</span><span class="ar">إيتابس</span></span>
+          <span><span class="en">Design</span><span class="ar">التصميم</span></span>
+          <span><span class="en">Review</span><span class="ar">المراجعة</span></span>
+          <span><span class="en">Cost</span><span class="ar">التكلفة</span></span>
+        </div>
+        <div class="ptiers">
+          <div class="ptier"><span class="lbl"><span class="en">6 months</span><span class="ar">6 شهور</span></span><span class="amt">$85</span></div>
+          <div class="ptier"><span class="lbl"><span class="en">1 year</span><span class="ar">سنة</span></span><span class="amt">$140</span></div>
+          <div class="ptier"><span class="lbl"><span class="en">Lifetime</span><span class="ar">مدى الحياة</span></span><span class="amt">$425</span></div>
+        </div>
+        <a class="pbtn" href="https://wa.me/201034567996?text=EMOCAD%20V2%20-%20Full%20Bundle" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-2.8.7.8-2.7-.2-.3A8 8 0 1112 20zm4.4-5.6c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.7.9-.1.1-.3.2-.5 0-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.4.1-.5l.4-.4c.1-.1.1-.2.2-.4 0-.1 0-.3 0-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5c-.1 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.4c.1.2 1.6 2.5 3.9 3.5.5.2 1 .4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1 0-.1-.2-.1-.4-.2z"/></svg>
+          <span class="en">Subscribe on WhatsApp</span><span class="ar">اشترك عبر واتساب</span>
+        </a>
+      </div>
+
+      <!-- Structural Design -->
+      <div class="pcard">
+        <div class="pname"><span class="en">Structural Design</span><span class="ar">التصميم الإنشائي</span></div>
+        <div class="psecs">
+          <span><span class="en">Editing</span><span class="ar">التحرير</span></span>
+          <span><span class="en">Extra</span><span class="ar">الإضافية</span></span>
+          <span><span class="en">ETABS</span><span class="ar">إيتابس</span></span>
+          <span><span class="en">Design</span><span class="ar">التصميم</span></span>
+          <span><span class="en">Design Review</span><span class="ar">مراجعة التصميم</span></span>
+        </div>
+        <div class="ptiers">
+          <div class="ptier"><span class="lbl"><span class="en">6 months</span><span class="ar">6 شهور</span></span><span class="amt">$50</span></div>
+          <div class="ptier"><span class="lbl"><span class="en">1 year</span><span class="ar">سنة</span></span><span class="amt">$90</span></div>
+          <div class="ptier"><span class="lbl"><span class="en">Lifetime</span><span class="ar">مدى الحياة</span></span><span class="amt">$290</span></div>
+        </div>
+        <a class="pbtn" href="https://wa.me/201034567996?text=EMOCAD%20V2%20-%20Structural%20Design" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-2.8.7.8-2.7-.2-.3A8 8 0 1112 20zm4.4-5.6c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.7.9-.1.1-.3.2-.5 0-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.4.1-.5l.4-.4c.1-.1.1-.2.2-.4 0-.1 0-.3 0-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5c-.1 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.4c.1.2 1.6 2.5 3.9 3.5.5.2 1 .4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1 0-.1-.2-.1-.4-.2z"/></svg>
+          <span class="en">Subscribe on WhatsApp</span><span class="ar">اشترك عبر واتساب</span>
+        </a>
+      </div>
+
+      <!-- Technical Office & Site -->
+      <div class="pcard">
+        <div class="pname"><span class="en">Technical Office &amp; Site</span><span class="ar">المكتب الفني والموقع</span></div>
+        <div class="psecs">
+          <span><span class="en">Editing</span><span class="ar">التحرير</span></span>
+          <span><span class="en">Extra</span><span class="ar">الإضافية</span></span>
+          <span><span class="en">Rebar</span><span class="ar">التسليح</span></span>
+          <span><span class="en">QS</span><span class="ar">الحصر</span></span>
+          <span><span class="en">Cost</span><span class="ar">التكلفة</span></span>
+        </div>
+        <div class="ptiers">
+          <div class="ptier"><span class="lbl"><span class="en">6 months</span><span class="ar">6 شهور</span></span><span class="amt">$40</span></div>
+          <div class="ptier"><span class="lbl"><span class="en">1 year</span><span class="ar">سنة</span></span><span class="amt">$75</span></div>
+          <div class="ptier"><span class="lbl"><span class="en">Lifetime</span><span class="ar">مدى الحياة</span></span><span class="amt">$245</span></div>
+        </div>
+        <a class="pbtn" href="https://wa.me/201034567996?text=EMOCAD%20V2%20-%20Technical%20Office" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-2.8.7.8-2.7-.2-.3A8 8 0 1112 20zm4.4-5.6c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.7.9-.1.1-.3.2-.5 0-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.4.1-.5l.4-.4c.1-.1.1-.2.2-.4 0-.1 0-.3 0-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5c-.1 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.4c.1.2 1.6 2.5 3.9 3.5.5.2 1 .4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1 0-.1-.2-.1-.4-.2z"/></svg>
+          <span class="en">Subscribe on WhatsApp</span><span class="ar">اشترك عبر واتساب</span>
+        </a>
+      </div>
+
+    </div>
+
+    <p class="pnote"><span class="en">Open EMOCAD in AutoCAD, run the PRICE command, copy your Device ID and send it with your chosen package on WhatsApp.</span><span class="ar">افتح EMOCAD داخل أوتوكاد، شغّل أمر PRICE، انسخ معرّف جهازك وأرسله مع الباقة المختارة على واتساب.</span></p>
+  </div>
+</section>
+
 <section id="install">
   <div class="wrap">
     <div class="center">
@@ -232,7 +344,7 @@
         <div class="gtext">
           <div class="gnum">1</div>
           <h3><span class="en">Download the ZIP</span><span class="ar">حمّل الملف المضغوط</span></h3>
-          <p><span class="en">Click Download. Your browser saves <b>EMOCAD_V1_Setup.zip</b> (about 56 MB) to your Downloads folder.</span><span class="ar">اضغط تحميل. يحفظ المتصفح ملف <b>EMOCAD_V1_Setup.zip</b> (حوالي 56 ميجابايت) في مجلد التنزيلات.</span></p>
+          <p><span class="en">Click Download. Your browser saves <b>EMOCAD_V2_Setup.zip</b> (about ~70 MB) to your Downloads folder.</span><span class="ar">اضغط تحميل. يحفظ المتصفح ملف <b>EMOCAD_V2_Setup.zip</b> (حوالي ~70 ميجابايت) في مجلد التنزيلات.</span></p>
           <div class="tip"><span class="en"><b>Tip:</b> the download comes straight from the official GitHub release page.</span><span class="ar"><b>ملاحظة:</b> التحميل مباشر من صفحة إصدار GitHub الرسمية.</span></div>
         </div>
         <div class="gfig">
@@ -254,15 +366,15 @@
             <path d="M84 124a8 8 0 018-8h30v50a8 8 0 01-8 8H92a8 8 0 01-8-8z" fill="#fff" stroke="#CFD9E4"/>
             <rect x="103" y="116" width="9" height="50" fill="#0B63CE" opacity=".14"/>
             <g fill="#0B63CE"><rect x="104" y="123" width="7" height="5" rx="1.2"/><rect x="104" y="133" width="7" height="5" rx="1.2"/><rect x="104" y="143" width="7" height="5" rx="1.2"/><rect x="104" y="153" width="7" height="5" rx="1.2"/></g>
-            <text x="146" y="134" font-family="Inter,Arial,sans-serif" font-size="14.5" font-weight="700" fill="#0F1E2E">EMOCAD_V1_Setup.zip</text>
-            <text x="146" y="155" font-family="Inter,Arial,sans-serif" font-size="12" fill="#5A6B7B">56 MB · ZIP archive</text>
+            <text x="146" y="134" font-family="Inter,Arial,sans-serif" font-size="14.5" font-weight="700" fill="#0F1E2E">EMOCAD_V2_Setup.zip</text>
+            <text x="146" y="155" font-family="Inter,Arial,sans-serif" font-size="12" fill="#5A6B7B">~70 MB · ZIP archive</text>
             <circle cx="362" cy="141" r="18" fill="none" stroke="#E3E9F0" stroke-width="4.5"/>
             <circle cx="362" cy="141" r="18" fill="none" stroke="url(#ring1)" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="113" stroke-dashoffset="1.5" transform="rotate(-90 362 141)"/>
             <path d="M355 141l5 5 9-10" fill="none" stroke="#0B63CE" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
             <g filter="url(#s1b)"><rect x="64" y="206" width="214" height="48" rx="11" fill="#fff"/></g>
             <circle cx="92" cy="230" r="14" fill="#E9F5EE"/>
             <path d="M92 224v8m0 0l-3.7-3.7M92 232l3.7-3.7M84.5 237h15" stroke="#0E7C4A" stroke-width="2.1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            <text x="116" y="226" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="700" fill="#0F1E2E">EMOCAD_V1_Setup.zip</text>
+            <text x="116" y="226" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="700" fill="#0F1E2E">EMOCAD_V2_Setup.zip</text>
             <rect x="116" y="234" width="140" height="7" rx="3.5" fill="#E6EBF1"/><rect x="116" y="234" width="140" height="7" rx="3.5" fill="#0E7C4A"/>
           </svg>
         </div>
@@ -273,7 +385,7 @@
         <div class="gtext">
           <div class="gnum">2</div>
           <h3><span class="en">Extract the ZIP</span><span class="ar">فُكّ الضغط</span></h3>
-          <p><span class="en">Right-click the downloaded file and choose <b>Extract All</b>. A file called <b>EMOCAD_V1_Setup.exe</b> appears.</span><span class="ar">انقر يمين على الملف واختر <b>Extract All / استخراج الكل</b>. يظهر ملف باسم <b>EMOCAD_V1_Setup.exe</b>.</span></p>
+          <p><span class="en">Right-click the downloaded file and choose <b>Extract All</b>. A file called <b>EMOCAD_Setup.exe</b> appears.</span><span class="ar">انقر يمين على الملف واختر <b>Extract All / استخراج الكل</b>. يظهر ملف باسم <b>EMOCAD_Setup.exe</b>.</span></p>
           <div class="tip"><span class="en"><b>Tip:</b> Windows extracts ZIP files on its own — no extra program needed.</span><span class="ar"><b>ملاحظة:</b> ويندوز يفكّ ملفات ZIP بنفسه — بلا برنامج إضافي.</span></div>
         </div>
         <div class="gfig">
@@ -358,7 +470,7 @@
             <path d="M126 148l4 4 9-9" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
             <text x="172" y="134" font-family="Inter,Arial,sans-serif" font-size="13.5" font-weight="700" fill="#0F1E2E">Do you want to allow this app</text>
             <text x="172" y="154" font-family="Inter,Arial,sans-serif" font-size="13.5" font-weight="700" fill="#0F1E2E">to make changes to your device?</text>
-            <text x="172" y="180" font-family="Inter,Arial,sans-serif" font-size="11.5" fill="#5A6B7B">EMOCAD_V1_Setup.exe</text>
+            <text x="172" y="180" font-family="Inter,Arial,sans-serif" font-size="11.5" fill="#5A6B7B">EMOCAD_Setup.exe</text>
             <line x1="106" y1="202" x2="354" y2="202" stroke="#EEF2F6"/>
             <rect x="212" y="214" width="66" height="30" rx="6" fill="#0B63CE"/>
             <text x="237" y="234" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="700" fill="#fff">Yes</text>
@@ -475,7 +587,7 @@
   <div class="wrap">
     <h2><span class="en">Start with a free trial today</span><span class="ar">ابدأ بتجربة مجانية اليوم</span></h2>
     <p><span class="en">Download, extract, install — and the EMOCAD ribbon is ready in AutoCAD.</span><span class="ar">حمّل وفُكّ الضغط وثبّت، ويصير ريبون EMOCAD جاهزاً في أوتوكاد.</span></p>
-    <a class="btn-white" href="https://github.com/AhmedTalaatEmam/EMOCAD-Setup/releases/latest/download/EMOCAD_V1_Setup.zip">
+    <a class="btn-white" href="https://github.com/AhmedTalaatEmam/EMOCAD-Setup/releases/latest/download/EMOCAD_V2_Setup.zip">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
       <span class="en">Download EMOCAD</span><span class="ar">تحميل EMOCAD</span>
     </a>
